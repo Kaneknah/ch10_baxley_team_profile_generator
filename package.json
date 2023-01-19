@@ -1,0 +1,22 @@
+{
+  "name": "ch10_baxley_team_profile_generator",
+  "version": "1.0.0",
+  "description": "Challenge 10  Team Profile Generator",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Kaneknah/ch10_baxley_team_profile_generator.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Kaneknah/ch10_baxley_team_profile_generator/issues"
+  },
+  "homepage": "https://github.com/Kaneknah/ch10_baxley_team_profile_generator#readme"
+}
