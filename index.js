@@ -59,7 +59,7 @@ function addEngineer() {
 	]);
 	.then(answer => {
 		let Engineer = new Engineer(answers.name, answers.id, answers,email, answers.gitHub);
-		employeeList.push(engineer);
+		employeeList.push(Engineer);
 		addEmployee();
 		})
 }
