@@ -1,3 +1,4 @@
+//Requires for the Lib file to connect  to Employee files.
 const Employee = require("./lib/employee");
 const Engineer = require("./lib/engineer");
 const Intern = require("./lib/intern");
@@ -5,7 +6,34 @@ const Manager = require("./lib/manager");
 
 const fs = require("fs");
 const inquirer = require("inquirer");
+//Creates Employee Array that can be added to from user input.
+const employeeList = []; 
 
+//Function for adding an Employee.
+function addEmployee() {
+	inquirer.prompt([
+		{
+			type: "list",
+			name: "employee",
+			message: "Which Employee Position would you like to add?",
+			choices: ["Engineer", "Intern", "Manager"],
+		},
+	])
+	.then(function(userInput){
+		switch(userInput.employee){
+			case "Engineer":
+				addEngineer();
+				break;
+				case "Intern":
+				addIntern();
+				break;
+				case "Manager":
+				addManager();
+				break;
+		}
+	})
+}
+//Functions for adding specific employee information from user input.
 function addEngineer() {
 	inquirer.prompt([
 		{
@@ -29,6 +57,11 @@ function addEngineer() {
 			message: "Please enter the Engineer's GitHub Username.",
 		},
 	]);
+	.then(answer => {
+		let Engineer = new Engineer(answers.name, answers.id, answers,email, answers.gitHub);
+		employeeList.push(engineer);
+		addEmployee();
+		})
 }
 
 function addIntern() {
@@ -53,7 +86,12 @@ function addIntern() {
 			name: "officeNum",
 			message: "Please enter the school the Intern is attending.",
 		},
-	]);
+	])
+	.then(answer => {
+		let Intern = new Intern(answers.name, answers.id, answers,email, answers.school);
+		employeeList.push(intern);
+		addEmployee();
+		})
 }
 
 function addManager() {
@@ -79,16 +117,19 @@ function addManager() {
 			message: "Please enter the Manager's Office Number.",
 		},
 	]);
+	.then(answer => {
+		let Manager = new Manager(answers.name, answers.id, answers,email, answers.officeNum);
+		employeeList.push(manager);
+		addEmployee();
+		})
 }
 
 let htmlContent = `<html>
-
-
-
-
 
 </html>`;
 
 fs.writeFile("./my_team.html", htmlContent, (error) => {
 	console.log(error);
 });
+
+addEmployee();
