@@ -6,8 +6,10 @@ const Manager = require("./lib/manager");
 
 const fs = require("fs");
 const inquirer = require("inquirer");
+const sourceHTML = require("./sourceHTML.js");
+
 //Creates Employee Array that can be added to from user input.
-const employeeList = [];
+const employeeArray = [];
 
 //Function for adding an Employee.
 function addEmployee() {
@@ -55,7 +57,7 @@ function addEngineer() {
 			},
 			{
 				type: "input",
-				name: "github",
+				name: "attribute",
 				message: "Please enter the Engineer's GitHub Username.",
 			},
 		])
@@ -65,10 +67,10 @@ function addEngineer() {
 				answers.name,
 				answers.id,
 				answers.email,
-				answers.github
+				answers.attribute
 			);
 			console.log(engineer);
-			employeeList.push(engineer);
+			employeeArray.push(engineer);
 			addEmployee();
 		});
 }
@@ -93,7 +95,7 @@ function addIntern() {
 			},
 			{
 				type: "input",
-				name: "officeNum",
+				name: "attribute",
 				message: "Please enter the school the Intern is attending.",
 			},
 		])
@@ -102,9 +104,9 @@ function addIntern() {
 				answers.name,
 				answers.id,
 				answers.email,
-				answers.school
+				answers.attribute
 			);
-			employeeList.push(intern);
+			employeeArray.push(intern);
 			addEmployee();
 		});
 }
@@ -129,7 +131,7 @@ function addManager() {
 			},
 			{
 				type: "input",
-				name: "officeNum",
+				name: "attribute",
 				message: "Please enter the Manager's Office Number.",
 			},
 		])
@@ -138,23 +140,30 @@ function addManager() {
 				answers.name,
 				answers.id,
 				answers.email,
-				answers.officeNum
+				answers.attribute
 			);
-			employeeList.push(manager);
+			employeeArray.push(manager);
 			addEmployee();
 		});
 }
 
-let htmlContent = `<html>
+function renderEmployees() {
+	for (let i = 0; i < employeeArray.length; i++) {
+		let currentEmployee = employeeArray[i];
 
-</html>`;
-
-fs.writeFile("./my_team.html", htmlContent, (error) => {
-	console.log(error);
-});
+		fs.writeFile("./my_team.html", currentEmployee, (error) => {
+			if (err) {
+				console.log(error);
+			}
+		});
+	}
+}
 
 addEmployee();
+renderEmployees();
 
-let html = "";
-
-html += `<div>`;
+// $(".employee-name").text(currentEmployee.name);
+// $(".employee-role").text(currentEmployee.role);
+// $(".employee-id").text(currentEmployee.id);
+// $(".employee-email").text(currentEmployee.email);
+// $(".employee-uni-attr").text(currentEmployee.uni - attr);
