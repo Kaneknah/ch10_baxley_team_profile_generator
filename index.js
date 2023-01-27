@@ -6,7 +6,7 @@ const Manager = require("./lib/manager");
 
 const fs = require("fs");
 const inquirer = require("inquirer");
-const sourceHTML = require("./sourceHTML.js");
+const teamGeneration = require("./sourceHTML.js");
 
 //Creates Employee Array that can be added to from user input.
 const employeeArray = [];
@@ -100,7 +100,7 @@ function addIntern() {
 			},
 		])
 		.then((answers) => {
-			let Intern = new Intern(
+			let intern = new Intern(
 				answers.name,
 				answers.id,
 				answers.email,
@@ -151,7 +151,7 @@ function renderEmployees() {
 	for (let i = 0; i < employeeArray.length; i++) {
 		let currentEmployee = employeeArray[i];
 
-		fs.writeFile("./my_team.html", currentEmployee, (error) => {
+		fs.writeFile("./my_team.html", teamGeneration(currentEmployee), (error) => {
 			if (err) {
 				console.log(error);
 			}
@@ -160,7 +160,7 @@ function renderEmployees() {
 }
 
 addEmployee();
-renderEmployees();
+// renderEmployees();
 
 // $(".employee-name").text(currentEmployee.name);
 // $(".employee-role").text(currentEmployee.role);
