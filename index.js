@@ -67,7 +67,7 @@ function addEngineer() {
 				answers.name,
 				answers.id,
 				answers.email,
-				answers.attribute
+				answers.attr
 			);
 			console.log(engineer);
 			employeeArray.push(engineer);
@@ -104,7 +104,7 @@ function addIntern() {
 				answers.name,
 				answers.id,
 				answers.email,
-				answers.attribute
+				answers.attr
 			);
 			employeeArray.push(intern);
 			addEmployee();
@@ -140,7 +140,7 @@ function addManager() {
 				answers.name,
 				answers.id,
 				answers.email,
-				answers.attribute
+				answers.attr
 			);
 			employeeArray.push(manager);
 			addEmployee();
@@ -158,7 +158,7 @@ function renderEmployees() {
 		});
 	}
 }
-
+console.log(currentEmployee);
 addEmployee();
 // renderEmployees();
 
