@@ -18,7 +18,6 @@ const renderTEAM = (team) => {
 	};
 };
 
-
 function renderHTML(renderEmployees) {
 	return `
 <!DOCTYPE html>
@@ -43,28 +42,27 @@ head>
 }
 
 function renderSelection(data) {
-    teamArray = [];
-    for (let i = 0; i < data.length; i++) {
-        const employee = data[i];
-        const role = getRole();
+	teamArray = [];
+	for (let i = 0; i < data.length; i++) {
+		const employee = data[i];
+		const role = getRole();
 
-    if(role === "Intern") {
-        const internInfo = teamGeneration(employee);
-        teamArray.push(internInfo);
-    }
-    if(role === "Engineer") {
-        const engineerInfo = teamGeneration(employee);
-        teamArray.push(engineerInfo);
-    }
-    if(role === "Manager") {
-     const managerInfo = teamGeneration(employee);
-        teamArray.push(managerInfo);
-    }
+		if (role === "Intern") {
+			const internInfo = teamGeneration(employee);
+			teamArray.push(internInfo);
+		}
+		if (role === "Engineer") {
+			const engineerInfo = teamGeneration(employee);
+			teamArray.push(engineerInfo);
+		}
+		if (role === "Manager") {
+			const managerInfo = teamGeneration(employee);
+			teamArray.push(managerInfo);
+		}
 
-const renderedEmployees = teamArray.join("")
+		const renderedEmployees = teamArray.join("");
 
 
+	}
 }
-
-};
 module.exports = renderHTML();

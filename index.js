@@ -160,7 +160,7 @@ function renderEmployees() {
 }
 console.log(currentEmployee);
 addEmployee();
-// renderEmployees();
+renderEmployees();
 
 // $(".employee-name").text(currentEmployee.name);
 // $(".employee-role").text(currentEmployee.role);
