@@ -1,5 +1,4 @@
-const renderTEAM = (team) => {
-	const teamGeneration = (employee) => {
+const createEmployeeCard = (employee) => {
 		return `
 <div class="employee-card" ></div>
     <div class="employee-header>
@@ -9,16 +8,15 @@ const renderTEAM = (team) => {
     <div class="employee-info>
         <ul class="employee-list>
             <li class="employee-id">${employee.getId()}</li>
-            <li class="employee-email"${employee.getEmail()}></li>
-            <li class="employee-uni-attr">${employee.getAttr()}</li>
+            <li class="employee-email">${employee.getEmail()}></li>
+            <li class="employee-uni-attr">${employee.getCustomAttribute()}</li>
         </ul>
     </div>
 </div>
 `;
-	};
 };
 
-function renderHTML(renderEmployees) {
+function createHTML(renderEmployees) {
 	return `
 <!DOCTYPE html>
 <html lang="en">
@@ -35,34 +33,32 @@ head>
 <header class = header><header>
 <main>
 <div class = flex-box-1>
-    <div class = team-cards>${renderedEmployees}</div>
+    <div class = team-cards>${createEmployeeCards}</div>
 </div> 
 </body>
 </html>`;
 }
 
-function renderSelection(data) {
-	teamArray = [];
-	for (let i = 0; i < data.length; i++) {
-		const employee = data[i];
-		const role = getRole();
-
-		if (role === "Intern") {
-			const internInfo = teamGeneration(employee);
-			teamArray.push(internInfo);
-		}
-		if (role === "Engineer") {
-			const engineerInfo = teamGeneration(employee);
-			teamArray.push(engineerInfo);
-		}
-		if (role === "Manager") {
-			const managerInfo = teamGeneration(employee);
-			teamArray.push(managerInfo);
-		}
-
-		const renderedEmployees = teamArray.join("");
+exports.createHTML
 
 
-	}
-}
-module.exports = renderHTML();
+// const renderSelection(data)=>
+// 	teamArray = [];
+// 	for (let i = 0; i < data.length; i++) {
+// 		const employee = data[i];
+// 		const role = getRole();
+// 		if (role === "Intern") {
+// 			const internInfo = teamGeneration(employee);
+// 			teamArray.push(internInfo);
+// 		}
+// 		if (role === "Engineer") {
+// 			const engineerInfo = teamGeneration(employee);
+// 			teamArray.push(engineerInfo);
+// 		}
+// 		if (role === "Manager") {
+// 			const managerInfo = teamGeneration(employee);
+// 			teamArray.push(managerInfo);
+// 		}
+// 		const renderedEmployees = teamArray.join("");
+// 	}
+// }
