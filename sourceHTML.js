@@ -1,12 +1,12 @@
 const createEmployeeCard = (employee) => {
-		return `
-<div class="employee-card" ></div>
-    <div class="employee-header>
+	return `
+<div class="employee-card">
+    <div class="employee-header">
         <h1 class="employee-name">${employee.getName()}</h1>
-        <h2 class="employee-role>${employee.getRole()}</h2>
+        <h2 class="employee-role">${employee.getRole()}</h2>
     </div>
-    <div class="employee-info>
-        <ul class="employee-list>
+    <div class="employee-info">
+        <ul class="employee-list">
             <li class="employee-id">${employee.getId()}</li>
             <li class="employee-email">${employee.getEmail()}></li>
             <li class="employee-uni-attr">${employee.getCustomAttribute()}</li>
@@ -16,7 +16,7 @@ const createEmployeeCard = (employee) => {
 `;
 };
 
-function createHTML(renderEmployees) {
+const createHTML = (renderEmployees) => {
 	return `
 <!DOCTYPE html>
 <html lang="en">
@@ -37,10 +37,9 @@ head>
 </div> 
 </body>
 </html>`;
-}
+};
 
-exports.createHTML
-
+exports.createEmployeeCard = createEmployeeCard;
 
 // const renderSelection(data)=>
 // 	teamArray = [];
