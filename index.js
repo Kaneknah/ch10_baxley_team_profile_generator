@@ -99,7 +99,7 @@ function employeeDetailPrompts(EmployeeType) {
 }
 
 function renderEmployees() {
-	for (let i = 0; i < employeeArray.length; i++) {
+	for (let employee of employeeArray) {
 		let employeeCard = createEmployeeCard(employee);
 
 		fs.writeFile("./my_team.html", teamGeneration(employee), (error) => {
@@ -109,7 +109,7 @@ function renderEmployees() {
 		});
 	}
 	const employeeCardHTML = employeeCardArray.join('');
-	const 
+	const finalHTML = createHTML(employeeCardHTML);
 }
 console.log(currentEmployee);
 addEmployee();
