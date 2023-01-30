@@ -6,7 +6,8 @@ const Manager = require("./lib/manager");
 
 const fs = require("fs");
 const inquirer = require("inquirer");
-const teamGeneration = require("./sourceHTML.js");
+// const teamGeneration = require("./sourceHTML.js");
+const {createEmployeeCard, }
 
 //Creates Employee Array that can be added to from user input.
 const employeeArray = [];
@@ -19,144 +20,96 @@ function addEmployee() {
 				type: "list",
 				name: "employee",
 				message: "Which Employee Position would you like to add?",
-				choices: ["Engineer", "Intern", "Manager"],
+				choices: ["Engineer", "Intern", "Manager", "Done"],
 			},
 		])
 		.then(function (userInput) {
-			switch (userInput.employee) {
-				case "Engineer":
-					addEngineer();
-					break;
-				case "Intern":
-					addIntern();
-					break;
-				case "Manager":
-					addManager();
-					break;
+			if (userInput.employee === "Done") {
+				renderEmployees(employeeArray);
+			} else {
+				employeeDetailPrompts(userInput.employee);
 			}
 		});
 }
 //Functions for adding specific employee information from user input.
-function addEngineer() {
+function employeeDetailPrompts(EmployeeType) {
 	inquirer
 		.prompt([
 			{
 				type: "input",
 				name: "name",
-				message: "Please enter the Engineer's Name.",
+				message: `Please enter ${employeeType}'s Name.`,
 			},
 			{
 				type: "input",
 				name: "id",
-				message: "Please enter the Engineer's ID.",
+				message: `Please enter the ${employeeType}'s ID.`,
 			},
 			{
 				type: "input",
 				name: "email",
-				message: "Please enter the Engineer's Email Address.",
+				message: `Please enter the ${employeeType}'s Email Address.`,
 			},
 			{
 				type: "input",
-				name: "attribute",
-				message: "Please enter the Engineer's GitHub Username.",
+				name: "customAttribute",
+				message:
+					employeeType === "engineer"
+						? "Please enter the engineer's GitHub Username."
+						: employeeType === "intern"
+						? "Please enter the school the intern is attending."
+						: "Please enter the manager's office number.",
 			},
 		])
 		.then((answers) => {
-			// console.log(answers);
-			let engineer = new Engineer(
-				answers.name,
-				answers.id,
-				answers.email,
-				answers.attr
-			);
-			console.log(engineer);
-			employeeArray.push(engineer);
-			addEmployee();
-		});
-}
-
-function addIntern() {
-	inquirer
-		.prompt([
-			{
-				type: "input",
-				name: "name",
-				message: "Please enter the Intern's Name.",
-			},
-			{
-				type: "input",
-				name: "id",
-				message: "Please enter the Intern's ID.",
-			},
-			{
-				type: "input",
-				name: "email",
-				message: "Please enter the Intern's Email Address.",
-			},
-			{
-				type: "input",
-				name: "attribute",
-				message: "Please enter the school the Intern is attending.",
-			},
-		])
-		.then((answers) => {
-			let intern = new Intern(
-				answers.name,
-				answers.id,
-				answers.email,
-				answers.attr
-			);
-			employeeArray.push(intern);
-			addEmployee();
-		});
-}
-
-function addManager() {
-	inquirer
-		.prompt([
-			{
-				type: "input",
-				name: "name",
-				message: "Please enter the Manager's Name.",
-			},
-			{
-				type: "input",
-				name: "id",
-				message: "Please enter the Manager's ID.",
-			},
-			{
-				type: "input",
-				name: "email",
-				message: "Please enter the Manager's Email Address.",
-			},
-			{
-				type: "input",
-				name: "attribute",
-				message: "Please enter the Manager's Office Number.",
-			},
-		])
-		.then((answers) => {
-			let manager = new Manager(
-				answers.name,
-				answers.id,
-				answers.email,
-				answers.attr
-			);
-			employeeArray.push(manager);
+			switch (employeeType) {
+				case "Manager":
+					let Manager = new Manager(
+						answers.name,
+						answers.id,
+						answers.email,
+						answers.customAttribute
+					);
+					employeeArray.push(employee);
+					break;
+				case "Intern":
+					let Intern = new Intern(
+						answers.name,
+						answers.id,
+						answers.email,
+						answers.customAttribute
+					);
+					employeeArray.push(employee);
+					break;
+				case "Engineer":
+					let Engineer = new Engineer(
+						answers.name,
+						answers.id,
+						answers.email,
+						answers.customAttribute
+					);
+					employeeArray.push(employee);
+					break;
+				case "Done":
+					void 0;
+					break;
+			}
 			addEmployee();
 		});
 }
 
 function renderEmployees() {
 	for (let i = 0; i < employeeArray.length; i++) {
-		let currentEmployee = employeeArray[i];
+		let employeeCard = createEmployeeCard(employee);
 
-		fs.writeFile("./my_team.html", teamGeneration(currentEmployee), (error) => {
+		fs.writeFile("./my_team.html", teamGeneration(employee), (error) => {
 			if (err) {
 				console.log(error);
 			}
 		});
 	}
+	const employeeCardHTML = employeeCardArray.join('');
+	const 
 }
 console.log(currentEmployee);
 addEmployee();
@@ -167,3 +120,113 @@ renderEmployees();
 // $(".employee-id").text(currentEmployee.id);
 // $(".employee-email").text(currentEmployee.email);
 // $(".employee-uni-attr").text(currentEmployee.uni - attr);
+
+// function addEngineer() {
+// 	inquirer
+// 		.prompt([
+// 			{
+// 				type: "input",
+// 				name: "name",
+// 				message: "Please enter the Engineer's Name.",
+// 			},
+// 			{
+// 				type: "input",
+// 				name: "id",
+// 				message: "Please enter the Engineer's ID.",
+// 			},
+// 			{
+// 				type: "input",
+// 				name: "email",
+// 				message: "Please enter the Engineer's Email Address.",
+// 			},
+// 			{
+// 				type: "input",
+// 				name: "attribute",
+// 				message: "Please enter the Engineer's GitHub Username.",
+// 			},
+// 		])
+// 		.then((answers) => {
+// 			// console.log(answers);
+// 			let engineer = new Engineer(
+// 				answers.name,
+// 				answers.id,
+// 				answers.email,
+// 				answers.attr
+// 			);
+// 			console.log(engineer);
+// 			employeeArray.push(engineer);
+// 			addEmployee();
+// 		});
+// }
+
+// function addIntern() {
+// 	inquirer
+// 		.prompt([
+// 			{
+// 				type: "input",
+// 				name: "name",
+// 				message: "Please enter the Intern's Name.",
+// 			},
+// 			{
+// 				type: "input",
+// 				name: "id",
+// 				message: "Please enter the Intern's ID.",
+// 			},
+// 			{
+// 				type: "input",
+// 				name: "email",
+// 				message: "Please enter the Intern's Email Address.",
+// 			},
+// 			{
+// 				type: "input",
+// 				name: "attribute",
+// 				message: "Please enter the school the Intern is attending.",
+// 			},
+// 		])
+// 		.then((answers) => {
+// 			let intern = new Intern(
+// 				answers.name,
+// 				answers.id,
+// 				answers.email,
+// 				answers.attr
+// 			);
+// 			employeeArray.push(intern);
+// 			addEmployee();
+// 		});
+// }
+
+// function addManager() {
+// 	inquirer
+// 		.prompt([
+// 			{
+// 				type: "input",
+// 				name: "name",
+// 				message: "Please enter the Manager's Name.",
+// 			},
+// 			{
+// 				type: "input",
+// 				name: "id",
+// 				message: "Please enter the Manager's ID.",
+// 			},
+// 			{
+// 				type: "input",
+// 				name: "email",
+// 				message: "Please enter the Manager's Email Address.",
+// 			},
+// 			{
+// 				type: "input",
+// 				name: "attribute",
+// 				message: "Please enter the Manager's Office Number.",
+// 			},
+// 		])
+// 		.then((answers) => {
+// 			let manager = new Manager(
+// 				answers.name,
+// 				answers.id,
+// 				answers.email,
+// 				answers.attr
+// 			);
+// 			employeeArray.push(manager);
+// 			addEmployee();
+// 		});
+// }
