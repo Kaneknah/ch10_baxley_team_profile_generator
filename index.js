@@ -1,5 +1,4 @@
 //Requires for the Lib file to connect  to Employee files.
-const Employee = require("./lib/employee");
 const Engineer = require("./lib/engineer");
 const Intern = require("./lib/intern");
 const Manager = require("./lib/manager");
@@ -7,7 +6,7 @@ const Manager = require("./lib/manager");
 const fs = require("fs");
 const inquirer = require("inquirer");
 // const teamGeneration = require("./sourceHTML.js");
-const {createEmployeeCard, }
+const { createEmployeeCard, createHTML } = require("./sourceHTML.js");
 
 //Creates Employee Array that can be added to from user input.
 const employeeArray = [];
@@ -62,6 +61,7 @@ function employeeDetailPrompts(EmployeeType) {
 			},
 		])
 		.then((answers) => {
+			let employee;
 			switch (employeeType) {
 				case "Manager":
 					let Manager = new Manager(
@@ -70,7 +70,6 @@ function employeeDetailPrompts(EmployeeType) {
 						answers.email,
 						answers.customAttribute
 					);
-					employeeArray.push(employee);
 					break;
 				case "Intern":
 					let Intern = new Intern(
@@ -79,7 +78,6 @@ function employeeDetailPrompts(EmployeeType) {
 						answers.email,
 						answers.customAttribute
 					);
-					employeeArray.push(employee);
 					break;
 				case "Engineer":
 					let Engineer = new Engineer(
@@ -88,32 +86,39 @@ function employeeDetailPrompts(EmployeeType) {
 						answers.email,
 						answers.customAttribute
 					);
-					employeeArray.push(employee);
 					break;
 				case "Done":
 					void 0;
 					break;
 			}
+			employeeArray.push(employee);
 			addEmployee();
 		});
 }
 
 function renderEmployees() {
+	const employeeCardArray = [];
 	for (let employee of employeeArray) {
-		let employeeCard = createEmployeeCard(employee);
-
-		fs.writeFile("./my_team.html", teamGeneration(employee), (error) => {
-			if (err) {
-				console.log(error);
-			}
-		});
+		const employeeCard = createEmployeeCard(employee);
+		employeeCardArray.push(employeeCard);
 	}
-	const employeeCardHTML = employeeCardArray.join('');
+	const employeeCardHTML = employeeCardArray.join("");
+	console.log(employeeCardHTML);
 	const finalHTML = createHTML(employeeCardHTML);
+
+	fs.writeFile("./dist/index.html", finalHTML, (err) => {
+		// if there is an error
+		if (err) {
+			console.log(err);
+			return;
+			// when the profile has been created
+		} else {
+			console.log("Team Profile Created");
+		}
+	});
 }
-console.log(currentEmployee);
+
 addEmployee();
-renderEmployees();
 
 // $(".employee-name").text(currentEmployee.name);
 // $(".employee-role").text(currentEmployee.role);

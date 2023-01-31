@@ -16,7 +16,7 @@ const createEmployeeCard = (employee) => {
 `;
 };
 
-const createHTML = (renderEmployees) => {
+const createHTML = (employeeCard) => {
 	return `
 <!DOCTYPE html>
 <html lang="en">
@@ -33,13 +33,14 @@ head>
 <header class = header><header>
 <main>
 <div class = flex-box-1>
-    <div class = team-cards>${createEmployeeCards}</div>
+    <div class = team-cards>${employeeCards}</div>
 </div> 
 </body>
 </html>`;
 };
 
 exports.createEmployeeCard = createEmployeeCard;
+exports.createHTML = createHTML
 
 // const renderSelection(data)=>
 // 	teamArray = [];
