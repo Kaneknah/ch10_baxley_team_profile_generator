@@ -3,13 +3,13 @@ const createEmployeeCard = (employee) => {
 	return `
 <div class="employee-card">
     <div class="employee-header">
-        <h1 class="employee-name">${employee.getName()}</h1>
+        <h1 class="employee-name">Name:${employee.getName()}</h1>
         <h2 class="employee-role">${employee.getRole()}</h2>
     </div>
     <div class="employee-info">
         <ul class="employee-list">
-            <li class="employee-id">${employee.getId()}</li>
-            <li class="employee-email">${employee.getEmail()}></li>
+            <li class="employee-id">ID:${employee.getId()}</li>
+            <li class="employee-email">Email:${employee.getEmail()}></li>
             <li class="employee-uni-attr">${employee.getCustomAttribute()}</li>
         </ul>
     </div>
@@ -18,7 +18,7 @@ const createEmployeeCard = (employee) => {
 };
 
 //Creates more HTML for the above cards to be added to.
-const createHTML = (employeeCard) => {
+const createHTML = (employeeCards) => {
 	return `
 <!DOCTYPE html>
 <html lang="en">

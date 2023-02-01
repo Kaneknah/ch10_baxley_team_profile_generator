@@ -65,7 +65,7 @@ function employeeDetailPrompts(employeeType) {
 			let employee;
 			switch (employeeType) {
 				case "Manager":
-					let Manager = new Manager(
+					employee = new Manager(
 						answers.name,
 						answers.id,
 						answers.email,
@@ -73,7 +73,7 @@ function employeeDetailPrompts(employeeType) {
 					);
 					break;
 				case "Intern":
-					let Intern = new Intern(
+					employee = new Intern(
 						answers.name,
 						answers.id,
 						answers.email,
@@ -81,7 +81,7 @@ function employeeDetailPrompts(employeeType) {
 					);
 					break;
 				case "Engineer":
-					let Engineer = new Engineer(
+					employee = new Engineer(
 						answers.name,
 						answers.id,
 						answers.email,
