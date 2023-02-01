@@ -1,3 +1,4 @@
+//Creates HTML for the Empoyee infomration to added to.
 const createEmployeeCard = (employee) => {
 	return `
 <div class="employee-card">
@@ -16,6 +17,7 @@ const createEmployeeCard = (employee) => {
 `;
 };
 
+//Creates more HTML for the above cards to be added to.
 const createHTML = (employeeCard) => {
 	return `
 <!DOCTYPE html>
@@ -39,26 +41,6 @@ head>
 </html>`;
 };
 
+//exports the created HTML so it can be used to create an HTML file.
 exports.createEmployeeCard = createEmployeeCard;
-exports.createHTML = createHTML
-
-// const renderSelection(data)=>
-// 	teamArray = [];
-// 	for (let i = 0; i < data.length; i++) {
-// 		const employee = data[i];
-// 		const role = getRole();
-// 		if (role === "Intern") {
-// 			const internInfo = teamGeneration(employee);
-// 			teamArray.push(internInfo);
-// 		}
-// 		if (role === "Engineer") {
-// 			const engineerInfo = teamGeneration(employee);
-// 			teamArray.push(engineerInfo);
-// 		}
-// 		if (role === "Manager") {
-// 			const managerInfo = teamGeneration(employee);
-// 			teamArray.push(managerInfo);
-// 		}
-// 		const renderedEmployees = teamArray.join("");
-// 	}
-// }
+exports.createHTML = createHTML;

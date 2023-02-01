@@ -3,9 +3,10 @@ const Engineer = require("./lib/engineer");
 const Intern = require("./lib/intern");
 const Manager = require("./lib/manager");
 
+//Requires the fs and inquirer aspects of the code.
 const fs = require("fs");
 const inquirer = require("inquirer");
-// const teamGeneration = require("./sourceHTML.js");
+//Requires the sourceHTML.js file for HTML creation.
 const { createEmployeeCard, createHTML } = require("./sourceHTML.js");
 
 //Creates Employee Array that can be added to from user input.
@@ -30,8 +31,8 @@ function addEmployee() {
 			}
 		});
 }
-//Functions for adding specific employee information from user input.
-function employeeDetailPrompts(EmployeeType) {
+//Functions for adding specific employee information from user input in one construction.
+function employeeDetailPrompts(employeeType) {
 	inquirer
 		.prompt([
 			{
@@ -53,9 +54,9 @@ function employeeDetailPrompts(EmployeeType) {
 				type: "input",
 				name: "customAttribute",
 				message:
-					employeeType === "engineer"
+					employeeType === "Engineer"
 						? "Please enter the engineer's GitHub Username."
-						: employeeType === "intern"
+						: employeeType === "Intern"
 						? "Please enter the school the intern is attending."
 						: "Please enter the manager's office number.",
 			},
@@ -95,7 +96,7 @@ function employeeDetailPrompts(EmployeeType) {
 			addEmployee();
 		});
 }
-
+//Function for rendering the created Employees into an array.
 function renderEmployees() {
 	const employeeCardArray = [];
 	for (let employee of employeeArray) {
@@ -106,6 +107,7 @@ function renderEmployees() {
 	console.log(employeeCardHTML);
 	const finalHTML = createHTML(employeeCardHTML);
 
+	//Writes the file to the HTML
 	fs.writeFile("./dist/index.html", finalHTML, (err) => {
 		// if there is an error
 		if (err) {
@@ -118,120 +120,5 @@ function renderEmployees() {
 	});
 }
 
+//Run addEmployee function.
 addEmployee();
-
-// $(".employee-name").text(currentEmployee.name);
-// $(".employee-role").text(currentEmployee.role);
-// $(".employee-id").text(currentEmployee.id);
-// $(".employee-email").text(currentEmployee.email);
-// $(".employee-uni-attr").text(currentEmployee.uni - attr);
-
-// function addEngineer() {
-// 	inquirer
-// 		.prompt([
-// 			{
-// 				type: "input",
-// 				name: "name",
-// 				message: "Please enter the Engineer's Name.",
-// 			},
-// 			{
-// 				type: "input",
-// 				name: "id",
-// 				message: "Please enter the Engineer's ID.",
-// 			},
-// 			{
-// 				type: "input",
-// 				name: "email",
-// 				message: "Please enter the Engineer's Email Address.",
-// 			},
-// 			{
-// 				type: "input",
-// 				name: "attribute",
-// 				message: "Please enter the Engineer's GitHub Username.",
-// 			},
-// 		])
-// 		.then((answers) => {
-// 			// console.log(answers);
-// 			let engineer = new Engineer(
-// 				answers.name,
-// 				answers.id,
-// 				answers.email,
-// 				answers.attr
-// 			);
-// 			console.log(engineer);
-// 			employeeArray.push(engineer);
-// 			addEmployee();
-// 		});
-// }
-
-// function addIntern() {
-// 	inquirer
-// 		.prompt([
-// 			{
-// 				type: "input",
-// 				name: "name",
-// 				message: "Please enter the Intern's Name.",
-// 			},
-// 			{
-// 				type: "input",
-// 				name: "id",
-// 				message: "Please enter the Intern's ID.",
-// 			},
-// 			{
-// 				type: "input",
-// 				name: "email",
-// 				message: "Please enter the Intern's Email Address.",
-// 			},
-// 			{
-// 				type: "input",
-// 				name: "attribute",
-// 				message: "Please enter the school the Intern is attending.",
-// 			},
-// 		])
-// 		.then((answers) => {
-// 			let intern = new Intern(
-// 				answers.name,
-// 				answers.id,
-// 				answers.email,
-// 				answers.attr
-// 			);
-// 			employeeArray.push(intern);
-// 			addEmployee();
-// 		});
-// }
-
-// function addManager() {
-// 	inquirer
-// 		.prompt([
-// 			{
-// 				type: "input",
-// 				name: "name",
-// 				message: "Please enter the Manager's Name.",
-// 			},
-// 			{
-// 				type: "input",
-// 				name: "id",
-// 				message: "Please enter the Manager's ID.",
-// 			},
-// 			{
-// 				type: "input",
-// 				name: "email",
-// 				message: "Please enter the Manager's Email Address.",
-// 			},
-// 			{
-// 				type: "input",
-// 				name: "attribute",
-// 				message: "Please enter the Manager's Office Number.",
-// 			},
-// 		])
-// 		.then((answers) => {
-// 			let manager = new Manager(
-// 				answers.name,
-// 				answers.id,
-// 				answers.email,
-// 				answers.attr
-// 			);
-// 			employeeArray.push(manager);
-// 			addEmployee();
-// 		});
-// }
