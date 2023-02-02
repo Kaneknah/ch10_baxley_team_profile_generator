@@ -97,7 +97,7 @@ function employeeDetailPrompts(employeeType) {
 		});
 }
 //Function for rendering the created Employees into an array.
-function renderEmployees() {
+function renderEmployees(employeeArray) {
 	const employeeCardArray = [];
 	for (let employee of employeeArray) {
 		const employeeCard = createEmployeeCard(employee);
@@ -108,7 +108,7 @@ function renderEmployees() {
 	const finalHTML = createHTML(employeeCardHTML);
 
 	//Writes the file to the HTML
-	fs.writeFile("./dist/index.html", finalHTML, err => {
+	fs.writeFile("./dist/index.html", finalHTML, (err) => {
 		// if there is an error
 		if (err) {
 			console.log(err);
