@@ -1,0 +1,94 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+
+.flex-container {
+	display: flex;
+	flex-direction: column;
+}
+.header {
+	display: flex;
+	justify-content: center;
+	flex-direction: row;
+	background-color: rgba(255, 0, 43, 0.8);
+	color: white;
+	font-size: xx-large;
+	padding: 1.75rem;
+}
+
+.team-cards {
+	display: flex;
+	flex-direction: row;
+	flex: 1 1 auto;
+}
+
+main {
+	margin: 2rem;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-items: center;
+	flex: 1 1 auto;
+}
+
+.employee-card {
+	display: flex;
+	flex-wrap: wrap;
+	width: 15vw;
+	height: calc(13vw * 1.3);
+	margin: 1rem;
+	box-shadow: 2px 2px 5.5px 1px rgba(0, 0, 0, 0.6);
+	background-color: rgb(241, 241, 241);
+	justify-content: center;
+	flex: 1 1 auto;
+}
+
+.employee-header {
+	width: 100%;
+	height: fit-content;
+	background-color: rgb(69, 97, 255);
+	color: white;
+	flex: 1 1 auto;
+	flex-wrap: wrap;
+}
+.employee-name,
+.employee-role {
+	font-size: x-large;
+	padding: 0rem 0.75rem;
+	padding-top: 0.5rem;
+	flex: 1 1 auto;
+}
+
+.employee-info {
+	display: flex;
+	flex-direction: column;
+	width: 75%;
+	height: 50%;
+	align-items: center;
+	font-size: smaller;
+	justify-content: center;
+	align-content: flex-start;
+	flex: 1 1 auto;
+}
+
+.employee-list {
+	display: flex;
+	flex-direction: column;
+	flex: 1 1 auto;
+}
+
+.employee-id,
+.employee-email,
+.employee-uni-attr {
+	display: flex;
+	align-items: center;
+	width: 100%;
+	/* border: inherit; */
+	flex-basis: 33%;
+	padding: 0 0.5rem;
+	color: blue;
+	flex: 1 1 auto;
+	font-size: larger;
+	border: 1px solid rgb(214, 214, 214);
+}
