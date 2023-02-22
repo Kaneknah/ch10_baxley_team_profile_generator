@@ -12,13 +12,12 @@ test("Can create a employee Name", () => {
 });
 
 test("Can create a employee ID", () => {
-	const id = 001;
+	const id = 1;
 	const e = new Employee("Hank", id);
 	expect(e.id).toBe(id);
 });
 test("Can create a employee Email", () => {
 	const email = "Hank@Awesome.com";
-	const e = new Employee("Hank", 001, email);
+	const e = new Employee("Hank", 1, email);
 	expect(e.email).toBe(email);
 });
-
