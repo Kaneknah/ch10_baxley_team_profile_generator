@@ -1,16 +1,5 @@
 # ch10_baxley_team_profile_generator
 
-Challenge 10 Team Profile Generator
-
-AS A manager
-I WANT to generate a webpage that displays my team's basic info
-SO THAT I have quick access to their emails and GitHub profiles
-
-
-
-
-# ch11_baxley_note_taker
-
 ## Table of Contents:
 
 - [Description](#description)
@@ -26,7 +15,7 @@ SO THAT I have quick access to their emails and GitHub profiles
 
 ## Description
 
-this project was the creation of a note taker app that specifically utilized Express.js on the back end to save and retrieve data from JSON files (Link to live website). The application utilized router.get, router.put, and router.delete to retrieve and render added notes on the front end. The application utilizes starter code as the front end.
+This project was the creation of a Team Profile Generator app that utilizes Node.js command line to intake user information and generate an HTML webpage of the provided data. The application utilizes the inquire package and jest package for functionality and testing.The application's processes are not viewable from a static website, therefore the provided video shows functionality.<iframe src="https://drive.google.com/file/d/176oOnCnIDOHyVmWwuIsFF5vyo4haQtFe/preview" width="640" height="480"></iframe>
 
 ## Acceptance Criteria
 
@@ -56,17 +45,19 @@ A user will need to instal the package.json modules in order to run this applica
 
 ## Usage
 
-A user will simply need to navigate to the notes page from the home page by clicking the "get started" button. Once there a user may create a new notes and save them, or edit or delete previously created notes by navigating the provided buttons.
+After installation, the user will simply run the server by entering "node index" in the terminal. After this, the user will be provided with a a list of prompts via inquire to select which employee, they wish to create. The user may then navigate through the Engineer, Manager, and Intern positions and provide the requested information. Once done, the user may select "End" and a new index.HTML will be generated showing the data in a visually appealing webpage format.
 
 ## Contribution
 
+N/A
+
 ## Testing
 
-this application received tests on the employee javascript functions to ensure that they were rendering the correct results during the formation of the HTML files in the terminal. All tests passed.
+This application received tests on the employee javascript functions to ensure that they were rendering the correct results during the formation of the HTML files in the terminal. All tests passed. Please See the provided walkthrough video for examples of the tests.
 
 ## Mockup
 
-![Alt text](./public/css/assets/Screen%20Shot%202023-02-19%20at%204.08.58%20PM.png)
+![Alt text](./assets/images/Team%20Gen.png)
 
 ## Credits
 
@@ -85,11 +76,11 @@ this application received tests on the employee javascript functions to ensure t
 #### Back End
 
 -Node.js<br>
+-Inquire<br>
+-Jest<br>
 
-### GitHub Link: <https://github.com/Kaneknah/ch11_baxley_note_taker>
+### GitHub Link: https://github.com/Kaneknah/ch10_baxley_team_profile_generator
 
 ## License
-Apache License: http://www.apache.org/licenses/LICENSE-2.0
 
-N/A
-...
+Apache License: http://www.apache.org/licenses/LICENSE-2.0
