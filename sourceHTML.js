@@ -9,8 +9,8 @@ const createEmployeeCard = (employee) => {
     <div class="employee-info">
         <ul class="employee-list">
             <li class="employee-id">ID:  ${employee.getId()}</li>
-            <li class="employee-email">Email:  ${employee.getEmail()}></li>
-            <li class="employee-uni-attr">${employee.getCustomAttribute()}</li>
+            <li class="employee-email">Email: <a href="mailto:${employee.getEmail()}">${employee.getEmail()}</a></li>
+            <li class="employee-uni-attr"> ${employee.getCustomAttribute()}</li>
         </ul>
     </div>
 </div>
